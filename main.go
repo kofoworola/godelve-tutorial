@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -11,7 +10,7 @@ import (
 func main() {
 	runner := timer.New(3, 10*time.Second, closureGreeting())
 	tickerResp := runner.Begin()
-	timeout := time.After(40 * time.Second)
+	timeout := time.After(30 * time.Minute)
 
 	select {
 	case err := <-tickerResp:
@@ -27,7 +26,7 @@ func closureGreeting() func() error {
 	persons := 0
 	return func() error {
 		persons++
-		fmt.Printf("Greetings to %d person(s)\n", persons)
+		log.Printf("Greetings to %d person(s)\n", persons)
 		return nil
 	}
 }

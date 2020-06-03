@@ -1,6 +1,8 @@
 package timer
 
-import "time"
+import (
+	"time"
+)
 
 type CustomTick struct {
 	interval time.Duration
@@ -29,6 +31,5 @@ func (c *CustomTick) Begin() chan error {
 		}
 		respChan <- nil
 	}()
-
 	return respChan
 }
